@@ -1,0 +1,35 @@
+import numpy as np
+import pandas as pd
+import statistics
+import math
+import matplotlib.pyplot as plt
+import matplotlib.mlab as mlab
+
+
+
+
+
+df = pd.read_csv('C:/Users/Yash/PycharmProjects/keepitup/graphs/input/test.csv')
+print(df.BL1_P_TOT)
+df_marks= df.BL1_P_TOT
+sortedMmarks = (sorted(df_marks))
+print(sortedMmarks[0])
+df_marks_el = df.EL1_PA_TOT
+mu_el = statistics.mean(df_marks_el)
+sigma_el = statistics.stdev(df_marks_el)
+print(statistics.mean(df_marks))
+mu = statistics.mean(df_marks)
+print(statistics.stdev(df_marks))
+sigma = statistics.stdev(df_marks)
+#x = np.arange(0,100,5)
+x = np.linspace(sortedMmarks[0],100,50)
+
+plt.plot(x,mlab.normpdf(x, mu, sigma),'*')
+plt.plot(x,mlab.normpdf(x, mu, sigma))
+print(mlab.normpdf(x, mu, sigma))
+# plt.plot(x,mlab.normpdf(x, mu_el, sigma_el))
+plt.show()
+plt.title('Analysis')
+plt.xlabel('x-axis')
+plt.ylabel('y-axis')
+
